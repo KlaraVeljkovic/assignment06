@@ -3,42 +3,39 @@ package assignment06;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import assignment06MEM.ChessBoard;
-
 // https://en.wikipedia.org/wiki/Algebraic_notation_(chess)
 // https://en.wikipedia.org/wiki/ICCF_numeric_notation
 public class Assignment6Tester {
 	static JFrame frame = new JFrame("Chess Board");
-	static Board board = new Board();
-	static boolean showSteps = true;
+    static Board board = new Board(); // Use assignment06MEM.Board
+    static boolean showSteps = true;
 
-	static void step(int n) throws InterruptedException {
-		if (showSteps) Thread.sleep(1000);
-		Command c = new Move(board, n);
-		board.doNewCommand(c);
-		if (showSteps) {
-			frame.add(ChessBoard.drawGui(frame, board ));
-			frame.validate();
-		}
-		printBoard();
-	}
+    static void step(int n) throws InterruptedException {
+        if (showSteps) Thread.sleep(1000);
+        Command c = new Move(board, n); // Use Move from assignment06MEM
+        board.doNewCommand(c);
+        if (showSteps) {
+            frame.add(ChessBoard.drawGui(frame, board)); // Use ChessBoard from assignment06MEM
+            frame.validate();
+        }
+        printBoard();
+    }
 
-	static void take(int n) throws InterruptedException {
-		if (showSteps) Thread.sleep(1000);
-		Command c = new Capture(board, n);
-		board.doNewCommand(c);
-		if (showSteps) {
-			frame.add(ChessBoard.drawGui(frame, board ));
-			frame.validate();
-		}
-		printBoard();
-	}
+    static void take(int n) throws InterruptedException {
+        if (showSteps) Thread.sleep(1000);
+        Command c = new Capture(board, n); // Use Capture from assignment06MEM
+        board.doNewCommand(c);
+        if (showSteps) {
+            frame.add(ChessBoard.drawGui(frame, board));
+            frame.validate();
+        }
+        printBoard();
+    }
 
 	static void undo() throws InterruptedException {
 		if (showSteps) Thread.sleep(1000);
@@ -60,7 +57,8 @@ public class Assignment6Tester {
 		printBoard();		
 	}
 
-	public static void main(String[] args) {		
+	public static void main(String[] args) {	
+		System.setProperty("java.awt.headless", "true");	
 		Runnable r = new Runnable() {
 			@Override
 			public void run() {				
@@ -124,13 +122,13 @@ public class Assignment6Tester {
 			e.printStackTrace();
 		}
 	}
-	public static void printBoard() {
-		for(int i = 1; i <= 8; i++) {
-			for(int j = 1; j <= 8; j++) {
-				Piece p = board.getPiece(10*j+i);
-				System.out.print(p + ",");
-			}
-		}
-		System.out.println();
-	}
+	 public static void printBoard() {
+        for (int i = 1; i <= 8; i++) {
+            for (int j = 1; j <= 8; j++) {
+                Piece p = board.getPiece(10 * j + i); // Use Piece from assignment06MEM
+                System.out.print(p + ",");
+            }
+        }
+        System.out.println();
+    }
 }

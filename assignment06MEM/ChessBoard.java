@@ -46,7 +46,7 @@ import javax.swing.SwingUtilities;
 // https://en.wikipedia.org/wiki/Algebraic_notation_(chess)
 // https://en.wikipedia.org/wiki/Correspondence_chess
 
-class ChessBoard {
+public class ChessBoard {
 
 	static Font font = new Font(Font.SANS_SERIF, Font.PLAIN, 50);
 	static Random rnd = new Random();
