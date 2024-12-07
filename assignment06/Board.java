@@ -93,26 +93,24 @@ public class Board {
 	}	
 
 	public void doNewCommand(Command cm) {
-		TODO
-		clear the undone stack
-		push the command on to the executed stack
-		execute the command
-	}
-	
-	public void undoCommand() {
-		TODO
-		if the executed stack size is positive
-		get the command by popping the stack, then
-		push this command on to the undone stack, then
-		call the undo of the command
-		(there is no code if the executed stack is empty)
-	}
-	public void redoCommand() {
-		TODO
-		if the undone stack size is positive
-		get the command by popping the stack, then
-		push this command on to the executed stack, then
-		execute the command
-		(there is no code if the executed stack is empty)
-	}
-}
+        undoneStack.clear(); // Clear the undone stack
+        executedStack.push(cm); // Push the command onto the executed stack
+        cm.execute(); // Execute the command
+    }
+    
+    public void undoCommand() {
+        if (!executedStack.isEmpty()) { // Check if there are commands to undo
+            Command cm = executedStack.pop(); // Pop the command from the executed stack
+            undoneStack.push(cm); // Push it onto the undone stack
+            cm.undo(); // Undo the command
+        }
+    }
+    
+    public void redoCommand() {
+        if (!undoneStack.isEmpty()) { // Check if there are commands to redo
+            Command cm = undoneStack.pop(); // Pop the command from the undone stack
+            executedStack.push(cm); // Push it onto the executed stack
+            cm.execute(); // Execute the command
+        }
+    }
+}    

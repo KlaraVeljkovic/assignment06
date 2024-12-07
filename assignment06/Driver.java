@@ -147,6 +147,7 @@ public class Driver {
 			frame.validate();		
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
+			System.err.println("An interruption occurred during the game setup or execution.");
 			e.printStackTrace();
 		}
 	}

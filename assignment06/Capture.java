@@ -21,9 +21,13 @@ public class Capture implements Command {
 		board.setPiece(to, p); // put the "from-piece" on the "to" square
 	}
 
-	@Override
+		@Override
 	public void undo() {
-		// use the undoICCF to move the piece back where it came from.
-		// and replace where it was with the lost piece.
+		int from = undoICCF / 100; // Extract the original "from" position
+		int to = undoICCF % 100; // Extract the original "to" position
+		Piece p = board.getPiece(to); // Get the piece currently on the "to" square
+		board.setPiece(to, lost); // Restore the lost piece to its original position
+		board.setPiece(from, p); // Move the capturing piece back to the "from" square
 	}
+
 }
