@@ -1,4 +1,4 @@
-package assignment06MEM;
+package assignment06;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -177,19 +177,6 @@ class ChessBoard {
 		l.setFont(new Font("SansSerif", Font.PLAIN, 24));
 		c.add(l);
 	}
-
-//	public static void addPieceRowToContainer(
-//			char s, Container c, Color squareColor, Color color) {
-//
-//		JLabel l = new JLabel("" + s, JLabel.CENTER);
-//		l.setOpaque(true);
-//		l.setBackground(squareColor);
-//		l.setForeground(color);
-//		if(s < '9')
-//			l.setFont(new Font("SansSerif", Font.PLAIN, 24));
-//		else l.setFont(new Font("SansSerif", Font.PLAIN, 48));
-//		c.add(l);
-//	}
 	
 	public static JPanel drawGui(JFrame frame, Board board) {
 		JPanel gui = new JPanel(new GridLayout(0, 10, 4, 4));
